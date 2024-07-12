@@ -1,0 +1,39 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+resources:
+  repositories:
+    - repository: PolicyRepository
+      type: github
+      endpoint: amsilf
+      name: amsilf/sc-policy-repo
+      ref: main
+
+stages:
+  - stage: Build
+    jobs:
+      - job: Build
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - checkout: self
+            fetchDepth: 1
+          - checkout: PolicyRepository
+            fetchDepth: 1
+          - task: DockerInstaller@0
+            inputs:
+              dockerVersion: '17.09.0-ce'
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: 'curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec'
+            displayName: 'Install chef inspect'
+
