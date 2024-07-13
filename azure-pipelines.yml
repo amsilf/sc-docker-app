@@ -39,8 +39,6 @@ stages:
           - task: Bash@3
             inputs:
               targetType: 'inline'
-              script: |
-                inspec shell --chef-license=accept
-                inspec exec ../sc-policy-repo/docker/
+              script: 'CHEF_LICENSE=accept-silent && inspec shell --chef-license=accept && inspec exec ../sc-policy-repo/docker/ --chef-license=accept'
               workingDirectory: $(System.DefaultWorkingDirectory)/sc-docker-app
             displayName: "Run inspec checks"
