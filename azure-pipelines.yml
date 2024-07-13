@@ -6,6 +6,9 @@
 trigger:
 - main
 
+variables:
+  - group: Inspec
+
 pool:
   vmImage: ubuntu-latest
 
