@@ -30,7 +30,6 @@ stages:
           - checkout: self
             fetchDepth: 1
           - checkout: PolicyRepository
-            fetchDepth: 1
           - task: DockerInstaller@0
             inputs:
               dockerVersion: '17.09.0-ce'
