@@ -40,6 +40,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                inspec exec ../sc-policy-repo/docker/ --chef-license accept-silent
+                inspec --chef-license=accept-silent
+                inspec exec ../sc-policy-repo/docker/
               workingDirectory: $(System.DefaultWorkingDirectory)/sc-docker-app
             displayName: "Run inspec checks"
