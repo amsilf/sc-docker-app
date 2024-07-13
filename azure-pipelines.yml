@@ -30,6 +30,7 @@ stages:
           - checkout: self
             fetchDepth: 1
           - checkout: PolicyRepository
+            fetchDepth: 1
           - task: DockerInstaller@0
             inputs:
               dockerVersion: '17.09.0-ce'
@@ -45,7 +46,7 @@ stages:
           - task: Bash@3
             inputs:
               targetType: 'inline'
-              script: 'ls -tlra $(System.DefaultWorkingDirectory)/sc-policy-repo/docker/'
+              script: 'ls -tlra $(System.DefaultWorkingDirectory)/sc-policy-repo/'
           - task: Bash@3
             inputs:
               targetType: 'inline'
