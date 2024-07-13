@@ -42,6 +42,6 @@ stages:
           - task: Bash@3
             inputs:
               targetType: 'inline'
-              script: 'inspec exec $(System.DefaultWorkingDirectory)/sc-policy-repo/docker/ --chef-license-key $(INSPEC_TRIAL_LICENSE) --chef-license accept-no-persist'
+              script: 'inspec exec $(Agent.BuildDirectory)/sc-policy-repo/docker/ --chef-license-key $(INSPEC_TRIAL_LICENSE) --chef-license accept-no-persist'
               workingDirectory: '$(Build.SourcesDirectory)/sc-docker-app'
             displayName: "Run inspec checks"
