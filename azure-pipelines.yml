@@ -39,9 +39,14 @@ stages:
               targetType: 'inline'
               script: 'curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec'
             displayName: 'Install chef inspect'
-            env:
-              CHEF_LICENSE: "accept-no-persist"
-
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: 'ls -tlra'
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: 'ls -tlra $(System.DefaultWorkingDirectory)/sc-policy-repo/docker/'
           - task: Bash@3
             inputs:
               targetType: 'inline'
