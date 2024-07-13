@@ -36,4 +36,9 @@ stages:
               targetType: 'inline'
               script: 'curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec'
             displayName: 'Install chef inspect'
-
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                inspec exec ../sc-policy-repo/docker/
+              workingDirectory: $(System.DefaultWorkingDirectory)/sc-helm-app
