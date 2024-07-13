@@ -41,4 +41,4 @@ stages:
               targetType: 'inline'
               script: |
                 inspec exec ../sc-policy-repo/docker/
-              workingDirectory: $(System.DefaultWorkingDirectory)/sc-helm-app
+              workingDirectory: $(System.DefaultWorkingDirectory)/sc-docker-app
