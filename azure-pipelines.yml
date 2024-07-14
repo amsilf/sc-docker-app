@@ -42,9 +42,5 @@ stages:
           - task: Bash@3
             inputs:
               targetType: 'inline'
-              script: 'ls -tlra $(System.DefaultWorkingDirectory)/sc-docker-app/'
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
               script: 'inspec exec $(System.DefaultWorkingDirectory)/sc-policy-repo/docker/ --input docker_path=$(System.DefaultWorkingDirectory)/sc-docker-app/Dockerfile --chef-license-key $(INSPEC_TRIAL_LICENSE) --chef-license accept-no-persist'
             displayName: "Run inspec checks"
